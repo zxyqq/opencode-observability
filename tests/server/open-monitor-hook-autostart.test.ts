@@ -189,7 +189,9 @@ describeIf("open monitor plugin hooks", () => {
       reason: string;
     };
     expect(output.decision).toBe("block");
-    expect(output.reason).toContain("Viewer opened");
+    expect(output.reason).toContain(
+      `Opened viewer: ${fixture.expectedUrl(base)}`,
+    );
 
     await waitForFile(pidFile);
     await waitForFile(openFile);
