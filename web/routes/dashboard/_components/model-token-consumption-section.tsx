@@ -98,7 +98,8 @@ export function ModelTokenConsumptionSection({
             Model Token Consumption
           </h2>
           <p className="mt-1 text-xs text-[var(--color-text-secondary)]">
-            Compare Input / Output as pie charts. Toggle cache display for Input.
+            Compare Input / Output as pie charts. Toggle cache display for
+            Input.
           </p>
         </div>
         <div

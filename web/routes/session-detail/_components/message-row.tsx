@@ -219,9 +219,7 @@ export const MessageRow = React.memo(function MessageRow({
   const effectiveCollapsed = plainMode ? false : isCollapsed;
   const showFade = effectiveCollapsed && isOverflowing;
   const showExpandBtn = !plainMode && isOverflowing;
-  const expandText = effectiveCollapsed
-    ? "Show more"
-    : "Collapse";
+  const expandText = effectiveCollapsed ? "Show more" : "Collapse";
 
   return (
     <div

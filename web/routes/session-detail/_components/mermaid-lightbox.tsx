@@ -361,9 +361,7 @@ export const MermaidLightbox = React.memo(function MermaidLightbox({
         >
           <div className="flex items-center gap-[var(--space-sm)] flex-wrap justify-start mermaid-lightbox-actions">
             <span className="text-[var(--color-text-secondary)] text-[0.78em] font-medium mermaid-lightbox-hint">
-              {
-                "Scroll to zoom / Drag to pan"
-              }
+              {"Scroll to zoom / Drag to pan"}
             </span>
             <span className="min-w-14 text-center font-[var(--font-mono)] text-[0.78em] text-[var(--color-text-secondary)] mermaid-lightbox-zoom">
               {Math.round(zoom * 100)}%
@@ -396,9 +394,7 @@ export const MermaidLightbox = React.memo(function MermaidLightbox({
             <div className="p-[var(--space-lg)] w-full mermaid-lightbox-error">
               <p className="m-0 mb-[var(--space-sm)] text-[var(--color-error-text)] font-semibold">
                 Mermaid
-                {
-                  "Failed to render diagram, showing source instead."
-                }
+                {"Failed to render diagram, showing source instead."}
               </p>
               <pre
                 className={cn(

@@ -101,9 +101,7 @@ export function MessageList({
     return (
       <div className="flex-1 overflow-y-auto overflow-x-hidden scroll-auto overscroll-contain">
         <p className="py-10 px-[var(--space-xl)] text-center text-[var(--color-text-secondary)]">
-          {
-            "No messages to display"
-          }
+          {"No messages to display"}
         </p>
       </div>
     );

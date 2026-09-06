@@ -178,9 +178,7 @@ export const FileDiffs = React.memo(function FileDiffs({
                   </div>
                 ) : isExpanded && !d.diff ? (
                   <div className="border-t border-[var(--color-border-subtle)] px-3 py-2 text-[0.8em] text-[var(--color-text-tertiary)]">
-                    {d.isNewFile
-                      ? "New file (no diff)"
-                      : "No diff data"}
+                    {d.isNewFile ? "New file (no diff)" : "No diff data"}
                   </div>
                 ) : null}
               </div>

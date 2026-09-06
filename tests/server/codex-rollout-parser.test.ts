@@ -302,7 +302,11 @@ describe("parseCodexRollout", () => {
           output: JSON.stringify({
             answers: {
               q1: {
-                answers: ["Plan A", "user_note: Supplement", "None of the above"],
+                answers: [
+                  "Plan A",
+                  "user_note: Supplement",
+                  "None of the above",
+                ],
               },
               q2: { answers: ["Yes"] },
             },

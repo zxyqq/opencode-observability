@@ -82,9 +82,7 @@ function HelpButton() {
           )}
         >
           <div className="text-[0.78em] font-bold uppercase tracking-wider text-[var(--color-text-secondary)] mb-2">
-            {
-              "Keyboard Shortcuts"
-            }
+            {"Keyboard Shortcuts"}
           </div>
           <table className="w-full border-collapse text-[0.8em]">
             <tbody>
@@ -99,9 +97,7 @@ function HelpButton() {
                   </kbd>
                 </td>
                 <td className="py-0.5 align-middle">
-                  {
-                    "Jump to next / previous message"
-                  }
+                  {"Jump to next / previous message"}
                 </td>
               </tr>
               <tr>
@@ -114,9 +110,7 @@ function HelpButton() {
                     E
                   </kbd>
                 </td>
-                <td className="py-0.5 align-middle">
-                  {"Toggle collapse"}
-                </td>
+                <td className="py-0.5 align-middle">{"Toggle collapse"}</td>
               </tr>
               <tr>
                 <td className="whitespace-nowrap pr-4 py-0.5 align-middle text-[var(--color-text-secondary)]">
@@ -129,9 +123,7 @@ function HelpButton() {
                   </kbd>
                 </td>
                 <td className="py-0.5 align-middle">
-                  {
-                    "Toggle filter (All/User/Assistant)"
-                  }
+                  {"Toggle filter (All/User/Assistant)"}
                 </td>
               </tr>
               <tr>
@@ -145,9 +137,7 @@ function HelpButton() {
                   </kbd>
                 </td>
                 <td className="py-0.5 align-middle">
-                  {
-                    "Toggle Markdown / Plain text"
-                  }
+                  {"Toggle Markdown / Plain text"}
                 </td>
               </tr>
               <tr>
@@ -161,9 +151,7 @@ function HelpButton() {
                   </kbd>
                 </td>
                 <td className="py-0.5 align-middle">
-                  {
-                    "Toggle tool call display"
-                  }
+                  {"Toggle tool call display"}
                 </td>
               </tr>
               <tr>
@@ -176,9 +164,7 @@ function HelpButton() {
                     B
                   </kbd>
                 </td>
-                <td className="py-0.5 align-middle">
-                  {"Toggle sidebar"}
-                </td>
+                <td className="py-0.5 align-middle">{"Toggle sidebar"}</td>
               </tr>
               <tr>
                 <td className="whitespace-nowrap pr-4 py-0.5 align-middle text-[var(--color-text-secondary)]">
@@ -190,9 +176,7 @@ function HelpButton() {
                     O
                   </kbd>
                 </td>
-                <td className="py-0.5 align-middle">
-                  {"Toggle OMO filter"}
-                </td>
+                <td className="py-0.5 align-middle">{"Toggle OMO filter"}</td>
               </tr>
               <tr>
                 <td className="whitespace-nowrap pr-4 py-0.5 align-middle text-[var(--color-text-secondary)]">
@@ -213,9 +197,7 @@ function HelpButton() {
                   </kbd>
                 </td>
                 <td className="py-0.5 align-middle">
-                  {
-                    "Toggle footer panel (prev / next)"
-                  }
+                  {"Toggle footer panel (prev / next)"}
                 </td>
               </tr>
             </tbody>
