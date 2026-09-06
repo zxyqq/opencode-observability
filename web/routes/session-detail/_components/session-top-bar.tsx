@@ -167,8 +167,8 @@ export const SessionTopBar = React.memo(function SessionTopBar({
             type="button"
             className={copyBtnClass}
             onClick={onCopy}
-            aria-label={`Copy command for ${session.id}`}
-            title={"Copy command"}
+            aria-label={`Copy session ID ${session.id}`}
+            title={"Copy session ID"}
             data-testid="copy-command-btn"
           >
             {copyState === "copied" ? (
@@ -269,11 +269,7 @@ export const SessionTopBar = React.memo(function SessionTopBar({
                 "bg-[var(--color-accent)] !text-[var(--color-text-inverse)] !border-[var(--color-accent)]",
             )}
             onClick={onToggleSidebar}
-            title={
-              sidebarOpen
-                ? "Close sidebar"
-                : "Open sidebar"
-            }
+            title={sidebarOpen ? "Close sidebar" : "Open sidebar"}
             data-testid="btn-sidebar-toggle"
           >
             <svg

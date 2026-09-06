@@ -167,10 +167,7 @@ function SearchResultCard({
           </div>
         </Link>
         <div className="flex shrink-0">
-          <SessionCopyButton
-            sessionId={result.id}
-            directory={result.directory}
-          />
+          <SessionCopyButton sessionId={result.id} />
         </div>
       </div>
       <Link

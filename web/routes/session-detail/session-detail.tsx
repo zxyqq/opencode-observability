@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import type { HarnessSessionDetailContract } from "../../../src/contracts/harness.js";
 import { useJson } from "../../hooks/use-json";
-import { buildResumeCommand } from "../../lib/harness";
+import { copyTextToClipboard } from "../../lib/clipboard";
 import { useLayoutMode } from "../../lib/layout-context";
 import { ControlBar } from "./_components/control-bar";
 import { FooterPaneSwiper } from "./_components/footer-pane-swiper";
@@ -327,20 +327,11 @@ export function SessionDetailPage(): React.ReactElement | null {
     };
   }, [plainMode]);
 
-  // Copy resume command
+  // Copy session ID
   const handleCopy = React.useCallback(async () => {
     if (!data) return;
-    const cmd = buildResumeCommand(
-      data.harness.id,
-      data.session.id,
-      data.session.directory,
-    );
-    try {
-      await navigator.clipboard.writeText(cmd);
-      setCopyState("copied");
-    } catch {
-      setCopyState("error");
-    }
+    const copied = await copyTextToClipboard(data.session.id);
+    setCopyState(copied ? "copied" : "error");
     setTimeout(() => setCopyState("idle"), 1200);
   }, [data]);
 
@@ -365,9 +356,7 @@ export function SessionDetailPage(): React.ReactElement | null {
         const err = (await res.json().catch(() => ({}))) as {
           error?: string;
         };
-        window.alert(
-          `Delete failed: ${err.error || res.statusText}`,
-        );
+        window.alert(`Delete failed: ${err.error || res.statusText}`);
         return;
       }
       navigate("/sessions");

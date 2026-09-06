@@ -1,36 +1,12 @@
 import React from "react";
+import { copyTextToClipboard } from "../lib/clipboard";
 import { cn } from "../lib/cn";
 
 interface SessionCopyButtonProps {
   sessionId: string;
-  directory: string;
 }
 
-function buildCommand(sessionId: string, directory: string): string {
-  const platformHint =
-    (navigator as { userAgentData?: { platform?: string } }).userAgentData
-      ?.platform ||
-    navigator.platform ||
-    "";
-  const isWindows =
-    /Win/i.test(platformHint) || /Windows/i.test(navigator.userAgent || "");
-
-  const quoteForShell = isWindows
-    ? (v: string) => `'${v.replace(/'/g, "''")}'`
-    : (v: string) => `'${v.replace(/'/g, "'\\\"'\\\"'")}'`;
-
-  const quotedDir = quoteForShell(directory);
-  const quotedSessionId = quoteForShell(sessionId);
-
-  return isWindows
-    ? `Set-Location -LiteralPath ${quotedDir}; if ($?) { opencode -s ${quotedSessionId} }`
-    : `cd ${quotedDir} && opencode -s ${quotedSessionId}`;
-}
-
-export function SessionCopyButton({
-  sessionId,
-  directory,
-}: SessionCopyButtonProps) {
+export function SessionCopyButton({ sessionId }: SessionCopyButtonProps) {
   const [state, setState] = React.useState<"idle" | "copied" | "error">("idle");
   const timeoutRef = React.useRef<ReturnType<typeof setTimeout>>(undefined);
 
@@ -39,33 +15,8 @@ export function SessionCopyButton({
       e.stopPropagation();
       e.preventDefault();
 
-      const command = buildCommand(sessionId, directory);
-
       (async () => {
-        let copied = false;
-        try {
-          if (navigator.clipboard?.writeText) {
-            await navigator.clipboard.writeText(command);
-            copied = true;
-          } else {
-            const textarea = document.createElement("textarea");
-            textarea.value = command;
-            textarea.setAttribute("readonly", "");
-            textarea.style.position = "absolute";
-            textarea.style.left = "-9999px";
-            textarea.style.opacity = "0";
-            document.body.appendChild(textarea);
-            textarea.focus();
-            textarea.select();
-            try {
-              copied = document.execCommand("copy");
-            } finally {
-              document.body.removeChild(textarea);
-            }
-          }
-        } catch {
-          copied = false;
-        }
+        const copied = await copyTextToClipboard(sessionId);
 
         setState(copied ? "copied" : "error");
 
@@ -73,7 +24,7 @@ export function SessionCopyButton({
         timeoutRef.current = setTimeout(() => setState("idle"), 1200);
       })();
     },
-    [sessionId, directory],
+    [sessionId],
   );
 
   React.useEffect(
@@ -85,10 +36,10 @@ export function SessionCopyButton({
 
   const label =
     state === "copied"
-      ? `Copied command for ${sessionId}`
+      ? `Copied session ID ${sessionId}`
       : state === "error"
         ? `Failed to copy for ${sessionId}`
-        : `Copy command for ${sessionId}`;
+        : `Copy session ID ${sessionId}`;
 
   return (
     <button
